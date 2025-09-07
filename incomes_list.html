@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>لیست تمام درآمد ها</title>
+  </head>
+  <body class="bg-gray-200 flex justify-center items-center min-h-screen">
+    <div class="bg-gray-300 rounded-xl shadow-md w-4/5 max-w-5xl p-4">
+      <!-- Header -->
+      <h2 class="text-2xl font-bold text-right mb-4">لیست تمام درآمد ها</h2>
+
+      <!-- Table -->
+      <div class="overflow-x-auto">
+        <table class="w-full border border-gray-500 rounded-lg overflow-hidden">
+          <thead class="bg-gray-100">
+            <tr class="text-center text-gray-700">
+              <th class="border border-gray-400 px-4 py-2">پرداختی</th>
+              <th class="border border-gray-400 px-4 py-2">تخفیف</th>
+              <th class="border border-gray-400 px-4 py-2">بدهي</th>
+              <th class="border border-gray-400 px-4 py-2">اقدام ها</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Example row -->
+            <tr class="text-center">
+              <td class="border border-gray-300 px-4 py-2">1000 افغانی</td>
+              <td class="border border-gray-300 px-4 py-2">10%</td>
+              <td class="border border-gray-300 px-4 py-2">200 افغانی</td>
+              <td class="border border-gray-300 px-4 py-2">
+                <button
+                  class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
+                >
+                  ویرایش
+                </button>
+                <button
+                  class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                >
+                  حذف
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

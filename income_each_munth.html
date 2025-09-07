@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>مقدار درآمد هر ماه</title>
+  </head>
+  <body class="bg-gray-200 flex justify-center items-center min-h-screen">
+    <div class="bg-gray-300 rounded-xl shadow-md w-4/5 max-w-5xl p-4">
+      <!-- Header -->
+      <div class="flex justify-between items-center mb-4">
+        <!-- Title -->
+        <h2 class="text-2xl font-bold">مقدار درآمد هر ماه</h2>
+      </div>
+
+      <!-- Chart Box -->
+      <div class="bg-gray-100 border border-gray-400 rounded-lg p-4 relative">
+        <!-- Year Dropdown (moved inside chart area, top-left) -->
+        <div class="absolute top-4 left-4">
+          <select
+            class="appearance-none bg-white border border-gray-400 rounded-full px-4 py-1 pr-8 text-gray-700 focus:outline-none"
+          >
+            <option>سال</option>
+            <option>۱۴۰۳</option>
+            <option>۱۴۰۲</option>
+            <option>۱۴۰۱</option>
+          </select>
+          <span
+            class="absolute left-3 top-2.5 text-gray-500 pointer-events-none"
+            >⬇️</span
+          >
+        </div>
+
+        <!-- Chart -->
+        <canvas id="incomeChart" class="h-96"></canvas>
+      </div>
+    </div>
+
+    <script>
+      const ctx = document.getElementById("incomeChart").getContext("2d");
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: [
+            "حمل",
+            "ثور",
+            "جوزا",
+            "سرطان",
+            "اسد",
+            "سنبله",
+            "میزان",
+            "عقرب",
+            "قوس",
+            "جدی",
+            "دلو",
+            "حوت",
+          ],
+          datasets: [
+            {
+              label: "کورسی ها",
+              data: [
+                2000, 4000, 6000, 3000, 7000, 5000, 6000, 8000, 3000, 4000,
+                5000, 7000,
+              ],
+              borderColor: "black",
+              borderWidth: 1,
+              fill: false,
+              tension: 0.2,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: "right",
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                stepSize: 2000,
+              },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

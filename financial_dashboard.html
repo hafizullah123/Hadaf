@@ -1,0 +1,50 @@
+<?php
+// ...existing code...
+?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Financial Page</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <nav class="flex justify-center gap-6 bg-[#d9d9d9] py-4">
+      <a
+        href="#compare"
+        onclick="loadPage('compare.html'); return false;"
+        class="bg-white text-black px-6 py-2 rounded font-bold text-lg block hover:bg-gray-200 transition"
+      >
+        مقایسه هزینه وپر داخت
+      </a>
+      <a
+        href="#payments"
+        onclick="loadPage('payments.html'); return false;"
+        class="bg-white text-black px-6 py-2 rounded font-bold text-lg block hover:bg-gray-200 transition"
+      >
+        هزینه ها وپرداخت ها
+      </a>
+      <a
+        href="#incomes"
+        onclick="loadPage('incomes_list.html'); return false;"
+        class="bg-white text-black px-6 py-2 rounded font-bold text-lg block hover:bg-gray-200 transition"
+      >
+        درامد ها
+      </a>
+    </nav>
+    <div class="flex justify-center mt-8">
+      <iframe
+        id="contentFrame"
+        src=""
+        class="w-[90%] h-[600px] border rounded-lg bg-white"
+      ></iframe>
+    </div>
+    <script>
+      function loadPage(page) {
+        document.getElementById("contentFrame").src = page;
+      }
+    </script>
+  </body>
+</html>
