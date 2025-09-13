@@ -10,14 +10,14 @@
   <body class="bg-gray-200 flex justify-center items-center min-h-screen">
     <div class="bg-gray-300 rounded-xl shadow-md w-4/5 max-w-5xl p-4">
       <!-- Header -->
-      <div class="flex flex-row-reverse justify-between items-center mb-4">
-        <!-- Title -->
+      <!-- Header -->
+      <div class="mb-4 text-right">
         <h2 class="text-2xl font-bold">مقدار درآمد هر ماه</h2>
       </div>
 
       <!-- Chart Box -->
       <div class="bg-gray-100 border border-gray-400 rounded-lg p-4 relative">
-        <!-- Year Dropdown (moved inside chart area, top-right for RTL) -->
+        <!-- Year Dropdown (RTL: absolute top-right) -->
         <div class="absolute top-4 right-4">
           <select
             class="appearance-none bg-white border border-gray-400 rounded-full px-4 py-1 pl-8 text-gray-700 focus:outline-none"
@@ -25,9 +25,8 @@
             <option>سال</option>
             <option>۱۴۰۳</option>
             <option>۱۴۰۲</option>
-            <option>۱۴۰</option>
+            <option>۱۴۰۱</option>
           </select>
-
           <span
             class="absolute left-3 top-2.5 text-gray-500 pointer-events-none"
             >⬇️</span
@@ -77,10 +76,13 @@
           maintainAspectRatio: false,
           plugins: {
             legend: {
-              position: "right",
+              position: "right", // move legend to right for RTL
             },
           },
           scales: {
+            x: {
+              reverse: true, // reverse X-axis for RTL
+            },
             y: {
               beginAtZero: true,
               ticks: {

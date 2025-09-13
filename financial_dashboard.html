@@ -1,50 +1,117 @@
 <?php
-// ...existing code...
+// ...existing PHP code...
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Financial Page</title>
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS & Chart.js -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
-  <body>
-    <nav class="flex justify-center gap-6 bg-[#d9d9d9] py-4">
-      <a
-        href="#"
-        onclick="loadPage(''); return false;"
-        class="bg-white text-black px-6 py-2 rounded font-bold text-lg block hover:bg-gray-200 transition"
-      >
-        مقایسه هزینه وپر داخت
-      </a>
-      <a
-        href=""
-        onclick="loadPage('income_each_munth.html'); return false;"
-        class="bg-white text-black px-6 py-2 rounded font-bold text-lg block hover:bg-gray-200 transition"
-      >
-        هزینه ها وپرداخت ها
-      </a>
-      <a
-        href="#"
-        onclick="loadPage('incomes_list.html'); return false;"
-        class="bg-white text-black px-6 py-2 rounded font-bold text-lg block hover:bg-gray-200 transition"
-      >
-        درامد ها
-      </a>
-    </nav>
-    <div class="flex justify-center mt-8">
-      <iframe
-        id="contentFrame"
-        src=""
-        class="w-[90%] h-[600px] border rounded-lg bg-white"
-      ></iframe>
+  <body class="bg-gray-100 flex justify-center p-8">
+    <!-- Main Container -->
+    <div class="bg-white shadow-lg rounded-2xl p-6 w-[90%]">
+      <h2 class="text-xl font-bold mb-6">درآمد ها</h2>
+
+      <!-- Section 1: Income List -->
+      <div class="bg-gray-50 rounded-xl shadow p-4 mb-6">
+        <h3 class="text-lg font-bold mb-4">لیست تمام درآمد ها</h3>
+        <table class="w-full border text-center text-sm">
+          <thead class="bg-gray-200">
+            <tr>
+              <th class="border p-2">پر داخت</th>
+              <th class="border p-2">تخفیف</th>
+              <th class="border p-2">بدهی</th>
+              <th class="border p-2">اقدام</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border p-2">۳۰۰</td>
+              <td class="border p-2">۱۰٪</td>
+              <td class="border p-2">۱۰۰</td>
+              <td class="border p-2">ویرایش</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Section 2: Monthly Income Chart -->
+      <div class="bg-gray-50 rounded-xl shadow p-4">
+        <div class="flex justify-between items-center mb-4">
+          <!-- Right side: Title -->
+          <h3 class="text-lg font-bold">مقدار درآمد هر ماه (افغانی)</h3>
+          <!-- Left side: Year Dropdown -->
+          <button class="bg-white border px-3 py-1 rounded shadow">
+            ▼ ۱۴۰۳
+          </button>
+        </div>
+        <canvas id="incomeChart" class="w-full h-64"></canvas>
+      </div>
     </div>
     <script>
-      function loadPage(page) {
-        document.getElementById("contentFrame").src = page;
-      }
+      // ترتیب درست ماه‌ها
+      const months = [
+        "حمل",
+        "ثور",
+        "جوزا",
+        "سرطان",
+        "اسد",
+        "سنبله",
+        "میزان",
+        "عقرب",
+        "قوس",
+        "جدی",
+        "دلو",
+        "حوت",
+      ];
+      // مقادیر نمونه به افغانی
+      const incomeData = [
+        7000, 5000, 8000, 6000, 9000, 7500, 8200, 7200, 6500, 5000, 5800, 7600,
+      ];
+
+      const ctx = document.getElementById("incomeChart").getContext("2d");
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: months,
+          datasets: [
+            {
+              label: "درآمد (افغانی)",
+              data: incomeData,
+              borderColor: "black",
+              backgroundColor: "rgba(0,0,0,0.1)",
+              tension: 0.3,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  return context.parsed.y + " افغانی";
+                },
+              },
+            },
+          },
+          scales: {
+            y: {
+              position: "right", // Y-axis (amount) goes to the right
+              ticks: {
+                callback: function (value) {
+                  return value + " افغانی";
+                },
+              },
+            },
+          },
+        },
+      });
     </script>
   </body>
 </html>
