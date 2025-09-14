@@ -13,7 +13,9 @@
   </head>
   <body class="bg-gray-100 flex justify-center p-8">
     <!-- Main Container -->
-    <div class="bg-white shadow-lg rounded-2xl p-6 w-[90%]">
+    <div
+      class="bg-white shadow-lg rounded-2xl p-6 w-[90%] border border-block-300"
+    >
       <h2 class="text-xl font-bold mb-6">درآمد ها</h2>
 
       <!-- Section 1: Income List -->
@@ -43,7 +45,7 @@
       <div class="bg-gray-50 rounded-xl shadow p-4">
         <div class="flex justify-between items-center mb-4">
           <!-- Right side: Title -->
-          <h3 class="text-lg font-bold">مقدار درآمد هر ماه (افغانی)</h3>
+          <h3 class="text-lg font-bold">مقدار درآمد هر ماه (کورس ها)</h3>
           <!-- Left side: Year Dropdown -->
           <button class="bg-white border px-3 py-1 rounded shadow">
             ▼ ۱۴۰۳
@@ -53,7 +55,7 @@
       </div>
     </div>
     <script>
-      // ترتیب درست ماه‌ها
+      // ترتیب صحیح تمام ماه‌ها از حمل تا حوت
       const months = [
         "حمل",
         "ثور",
@@ -68,7 +70,8 @@
         "دلو",
         "حوت",
       ];
-      // مقادیر نمونه به افغانی
+
+      // مقادیر درآمد مطابق ترتیب ماه‌ها
       const incomeData = [
         7000, 5000, 8000, 6000, 9000, 7500, 8200, 7200, 6500, 5000, 5800, 7600,
       ];
@@ -77,7 +80,7 @@
       new Chart(ctx, {
         type: "line",
         data: {
-          labels: months,
+          labels: months, // ماه‌ها به ترتیب صحیح
           datasets: [
             {
               label: "درآمد (افغانی)",
@@ -102,12 +105,15 @@
           },
           scales: {
             y: {
-              position: "right", // Y-axis (amount) goes to the right
+              position: "right", // مبلغ از سمت راست نمایش داده می‌شود
               ticks: {
                 callback: function (value) {
                   return value + " افغانی";
                 },
               },
+            },
+            x: {
+              reverse: false, // ماه‌ها از حمل تا حوت نمایش داده شوند
             },
           },
         },
